@@ -3,6 +3,7 @@ const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
+const phonenumber = document.getElementById('phonenumber');
 
 form.addEventListener('submit', e=>{
 e.preventDefault();
@@ -11,11 +12,14 @@ checkInputs();
 });
 
 function checkInputs() {
-// trim to remove the whitespaces
+
 const usernameValue = username.value.trim();
 const emailValue = email.value.trim();
+//const emailValue = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const passwordValue = password.value.trim();
 const password2Value = password2.value.trim();
+const phonenumberValue = phonenumber.value.trim();
+
 
 if(usernameValue === '') {
     setErrorFor(username, 'Username cannot be blank');
@@ -25,7 +29,8 @@ if(usernameValue === '') {
 
 if(emailValue === '') {
     setErrorFor(email, 'Email cannot be blank');
-    } else if (!isEmail(emailValue)) {
+     } else if (!isEmail(emailValue)) {
+//}else if(email.matches(emailValue)){
     setErrorFor(email, 'Not a valid email');
     } else {
     setSuccessFor(email);
@@ -44,7 +49,15 @@ if(password2Value === '') {
     } else{
     setSuccessFor(password2);
     }
+
+if(phonenumberValue === '') {
+    setErrorFor(phonenumber, 'Phonenumber cannot be blank');
+    } 
+    else{
+    setSuccessFor(phonenumber);
+    }
 }
+
 function setErrorFor(input, message) {
     const formControl = input.parentElement;
     const small = formControl.querySelector('small');
@@ -56,8 +69,8 @@ function setSuccessFor(input) {
     formControl.className = 'form-control success';
     }
 
-    function isEmail(email) {
-    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+    function isEmail(emailValue) {
+    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     }
     
     
