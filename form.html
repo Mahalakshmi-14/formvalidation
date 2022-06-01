@@ -15,42 +15,49 @@
         <form id="form" class="form" action="">
             <div class="form-control">
                 <label for="username">Username</label>
-                <input type="text" placeholder="username" id="username" />
+                <input type="text" placeholder="username" id="username" 
+                onkeypress="javascript:return isAlphabet(event)" />
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
-                <small>Error message</small>
+                <span id="name-error" ></span>
             </div>
             <div class="form-control">
                 <label for="username">Email</label>
                 <input type="email" placeholder="abc@gmail.com" id="email" />
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
-                <small>Error message</small>
+                <span id="email-error" ></span>
+            </div>
+            <div class="form-control">
+                <label for="username">phonenumber</label>
+                <input type="text" placeholder="123 456 7890" id="phonenumber"
+                onkeypress="javascript:return isNumber(event)"/>
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="phone-error" ></span>
             </div>
             <div class="form-control">
                 <label for="username">Password</label>
                 <input type="password" placeholder="Password" id="password"/>
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
-                <small>Error message</small>
+                <span id="pass-error" ></span>
             </div>
             <div class="form-control">
                 <label for="username">Password check</label>
                 <input type="password" placeholder="Password two" id="password2"/>
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
-                <small>Error message</small>
+                <span id="confpass-error" ></span>
             </div>
 
-            <div class="form-control">
-                <label for="username">phonenumber</label>
-                <input type="phonenumber" placeholder="123 456 7890" id="phonenumber"/>
-                <i class="fas fa-check-circle"></i>
-                <i class="fas fa-exclamation-circle"></i>
-                <small>Error message</small>
-            </div>
+            
 
-            <button>Submit</button>
+            <button onclick="return validateForm()" type="submit">Sign Up</button>
+
+            <span id="Submit-error"></span>
+
+            <button type="reset">Reset</button>
         </form>
     </div>
     <script src="./form.js"></script>
