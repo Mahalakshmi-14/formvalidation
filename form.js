@@ -1,32 +1,36 @@
 var nameError = document.getElementById("name-error");
+var nameError1 = document.getElementById("name-error1");
 var phoneError = document.getElementById("phone-error");
+var phoneError1 = document.getElementById("phone-error1");
 var emailError = document.getElementById("email-error");
+var emailError1 = document.getElementById("email-error1");
 var passError = document.getElementById("pass-error");
+var passError1 = document.getElementById("pass-error1");
 var confPassError = document.getElementById("confpass-error");
+var confPassError1 = document.getElementById("confpass-error1");
 var SubmitError = document.getElementById("Submit-error");
-
-
-
-
-
-
-
-
 
 function validateName(){
     var name = document.getElementById('username').value;
 
     if(name.length == 0){
+        //nameError1.style.display="none";
         nameError.innerHTML = 'Name is Required';
         return false;
     }
-    if (name.length <3 || name.length > 15){
-        nameError.innerHTML = 'must be greater than 3 and less than 15';
+    else if (name.length <5 || name.length > 15){
+        
+        nameError.style.display="block";
+        nameError.innerHTML = 'must be greater than 5 and less than 15';
+        nameError1.style.display="none";
         return false;
     }
-    
-    nameError.innerHTML = '<i class="fas fa-check-circle"></i>';
+    else{
+        nameError.style.display="none";
+        nameError1.style.display="block";
+        nameError1.innerHTML = 'valid username';
     return true;
+    }
 }
 
 function validateEmail(){
@@ -36,12 +40,18 @@ function validateEmail(){
         emailError.innerHTML = 'Email is Required';
         return false;
     }
-    if(!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{3,4}$/)){
+    else if(!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{3,4}$/)){
+        emailError.style.display="block";
         emailError.innerHTML = 'Invalid Email';
+        emailError1.style.display="none";
         return false;
     }
-    emailError.innerHTML = '<i class="fas fa-check-circle"></i>';
+    else{
+        emailError.style.display="none";
+        emailError1.style.display="block";
+        emailError1.innerHTML = 'valid email';
     return true;
+    }
 }
 
 function validatePhone(){
@@ -51,16 +61,23 @@ function validatePhone(){
         phoneError.innerHTML = 'Phone No is Required';
         return false;
     }
-    if(phone.length !== 10){
+    else if(phone.length !== 10){
+        phoneError.style.display="block";
         phoneError.innerHTML = 'Phone no should be 10 digits';
+        phoneError1.style.display="none";
         return false;
     }
     // if(!phone.match(/^[0-9]{10}$/)){
     //     phoneError.innerHTML = 'Only Numbers';
     //     return false;
     // }
-     phoneError.innerHTML = '<i class="fas fa-check-circle"></i>';
-    return true;
+    else{
+        phoneError.style.display="none";
+        phoneError1.style.display="block";
+        phoneError1.innerHTML = 'valid phone number';
+        return true;
+    }
+     
 }
 
 
@@ -71,20 +88,26 @@ function validatePassword(){
          return false;
      } 
 
-     if(!password.match(/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{3,16}$/)){
-
-        passError.innerHTML = 'Password must fullfil the requirments ';
-
+     else if(!password.match(/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{3,16}$/)){
+        passError.style.display="block";
+        passError.innerHTML = 'Password must fullfil the requirments';
+        passError1.style.display="none";
         return false;
 
     }
-    //  if (password.length < 5 || password.length > 10){
-    //      passError.innerHTML = 'password must be greater than 5 and less than 10';
-    //      return false;
-    //  }
-
-     passError.innerHTML = '<i class="fas fa-check-circle"></i>';
+     else if (password.length < 5 || password.length > 9){
+         passError.style.display="block";
+         passError.innerHTML = 'password must be greater than 5 and less than 8';
+         passError1.style.display="none";
+         return false;
+     }
+    else{
+        passError.style.display="none";
+        passError1.style.display="block";
+        passError1.innerHTML = 'valid password';
+     
      return true;
+    }
 }
 
 function validateConfPassword(){
@@ -92,14 +115,21 @@ function validateConfPassword(){
     var password = document.getElementById('password').value;
     if(confpass.length == ''){
         confPassError.innerHTML = 'Enter confirm password ';
+        confPassError1.style.display="none";
         return false;
     }
-    if(confpass != password){
+    else if(confpass != password){
+        confPassError.style.display="block";
         confPassError.innerHTML = 'password does not match';
+        confPassError1.style.display="none";
         return false;
     }
-    confPassError.innerHTML = '<i class="fas fa-check-circle"></i>';
+    else{
+        confPassError.style.display="none";
+        confPassError1.style.display="block";
+        confPassError1.innerHTML = 'password matched';
     return true;
+    }
 
 }
 function isAlphabet(evt) {
@@ -119,14 +149,27 @@ return true;
 function validateForm(){
 
 
-if(!validateName() || !validateEmail() || !validatePhone() || !validatePassword() || !validateConfPassword() ){
+if( !validateName() || !validateEmail() || !validatePhone() || !validatePassword() || !validateConfPassword() ){
             SubmitError.style.display = 'block';
             SubmitError.innerHTML = 'Please fill all the details';
             
             return false;
         }
+        alert("successfully submitted");
     }
 
+// function clear(){
+//     nameError.style.display="none";
+//     nameError1.style.display="none";
+//     phoneError.style.display="none";
+//     phoneError1.style.display="none";
+//     emailError.style.display="none";
+//     emailError1.style.display="none";
+//     passError.style.display="none";
+//     passError1.style.display="none";
+//     confPassError.style.display="none";
+//     confPassError1.style.display="none";
+//}
 
 
 

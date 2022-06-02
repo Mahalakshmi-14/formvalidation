@@ -112,3 +112,9 @@ body {
 	margin-top: 20px;
 	width: 100%;
 }
+#name-error, #phone-error, #email-error, #pass-error, #confpass-error{
+	color: red;
+}
+#name-error1, #phone-error1, #email-error1, #pass-error1, #confpass-error1{
+	color: green;
+}
